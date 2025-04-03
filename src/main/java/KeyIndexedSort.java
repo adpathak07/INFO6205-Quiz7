@@ -19,13 +19,24 @@ public class KeyIndexedSort {
 
         // Student TODO:
         // 1. Compute frequency counts
-       
+        for (String s : a) {
+            int c = charAt(s, d) + 2;  
+            count[c]++;
+        }
+    
         // 2. Transform counts to indices
-       
+        for (int r = 0; r < R + 1; r++) {
+            count[r + 1] += count[r];
+        }
+    
         // 3. Distribute to auxiliary array
-        
+        for (String s : a) {
+            int c = charAt(s, d) + 1; 
+            aux[count[c]++] = s;
+        }
+    
         // 4. Copy back to original array
-
+        System.arraycopy(aux, 0, a, 0, n);
 
     }
 
